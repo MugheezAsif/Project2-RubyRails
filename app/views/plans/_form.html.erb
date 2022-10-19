@@ -1,0 +1,30 @@
+
+<div class="my-2 text-left col-md-4 py-1">
+<%= form_with(model: plan) do |form| %>
+  <% if plan.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+        <% plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name,class: "form-control my-2", maxlength: '12' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :monthly_fee, style: "display: block" %>
+    <%= form.number_field :monthly_fee, class: "form-control my-2", max: 999 %>
+  </div>
+  <%= form.number_field :user_id, value: current_user.id, type: :hidden%>
+  <div class="form-group">
+    <%= form.submit 'Submit', class: "btn btn-primary my-2"  %>
+  </div>
+<% end %>
+</div>

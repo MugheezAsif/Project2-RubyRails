@@ -1,0 +1,41 @@
+<%= form_with(model: [@plan, feature], local: true) do |form| %>
+  <% if feature.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+
+      <ul>
+        <% feature.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group my-2">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: "form-control", maxlength: '12' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.label :code, style: "display: block" %>
+    <%= form.number_field :code,class: "form-control", max: 9999 %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.label :unit_price, style: "display: block" %>
+    <%= form.number_field :unit_price, class: "form-control", max: 999 %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.label :max_limit, style: "display: block" %>
+    <%= form.number_field :max_limit, class: "form-control", max: 20 %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.text_field :plan_id, value: @plan.id, type: :hidden %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.submit "Submit", class: "btn btn-outline-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,43 @@
+
+
+<section class="same-heading">
+    <div class="container my-5">
+        <h2>Subscription Details</h2>
+        <div>
+            <p><strong>Plan Name :</strong><%= @plan.name %></p>
+            <p><strong>Plan Monthly fee :</strong><%= @plan.monthly_fee %></p>
+        </div>
+        <% if @subscription.sub_features.exists? %>
+            <p><strong>Features : </strong></p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Current Usage</th>
+                    <th scope="col">Max Usage</th>
+                    <th scope="col">Bill</th>
+                    <th scope="col">Add Usage</th>
+                </tr>
+                </thead>
+                <%count = 0%>
+                <% @subscription.sub_features.each do |feature| %>
+                <tbody>
+                    <tr>
+                    <th scope="row"><%=count += 1%></th>
+                    <td><%=feature.name%></td>
+                    <td><%=feature.unit_price%></td>
+                    <td><%=feature.current_usage%></td>
+                    <td><%=feature.max_usage%></td>
+                    <td><%=feature.bill%>$</td>
+                    <td><%= link_to "Add Usage by 1", plan_subscription_add_usage_path(@subscription.plan, subscription: @subscription, feature: feature) %></td>
+                    </tr>
+                </tbody>
+                <%end%>
+            </table>
+        <%else%>
+            <p>No Features Yet</p>
+        <%end%>
+    </div>
+</section>

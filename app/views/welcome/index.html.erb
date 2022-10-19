@@ -1,0 +1,154 @@
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Project Number 2 Made By Mugheez Asif</h1>
+          <h2>I am a talented designers making websites with Bootstrap and Ruby on Rails</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            
+            <% if user_signed_in? %>
+              <%= button_to 'Sign Out', destroy_user_session_path, method: :delete ,class: "btn-get-started scrollto"%>
+            <%else%>
+              <%= link_to 'Sign In', new_user_session_path,class: "btn-get-started scrollto" %>
+            <%end%>
+            
+            <%= link_to "Account Request", contacts_request_account_path ,class: "btn-watch-video"%>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="/assets/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+</section>
+<section id="skills" class="skills">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center aos-init aos-animate" data-aos="fade-right" data-aos-delay="100">
+            <img src="assets/skills.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
+            <h3>Languages Used</h3>
+            <p class="fst-italic">
+              Here is the list of all the languages that are used in the making of this website i hope that you like it!
+            </p>
+
+            <div class="skills-content">
+
+              <div class="progress">
+                <span class="skill">RUBY <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">HTML <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">CSS <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">Javascript <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+</section>
+<section id="cta" class="cta">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Request a Buyer's Account</h3>
+        <p> Click on the button to request a buyers account. Then fill out the form on the next page and be through as possible in your message then we will send you a response on the email that you provided.</p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <%= link_to "Request Account", contacts_request_account_path, class: "cta-btn align-middle" %>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-5 d-flex align-items-stretch">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>Gulshan Ali Colony, Lahore, LC 535022</p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>m.mogheesasif@gmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+92 312 0499617</p>
+          </div>
+
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+        </div>
+
+      </div>
+
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+        <form class="php-email-form">
+          <%= form_for @contact do |f|%>
+              <div class="row">
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field  :name, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :email %>
+                  <%= f.text_field :email, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :message %>
+                  <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control", placeholder: "Send me a message"%>
+                </div>
+                <div class="text-center">
+                  <%= f.submit 'Send Message', class: 'btn btn-primary' %>
+                </div>
+              </div>
+          <% end %>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>

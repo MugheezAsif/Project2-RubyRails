@@ -1,0 +1,44 @@
+
+<section class="same-heading">
+    <div class="container my-5">
+        <h2>Admin Portal</h2>
+        <div class="container my-2">
+            <p class="text-center">Here you can manage all of your activities</p>
+            <h4>Send Invite for account</h4>
+        
+            <%= link_to "Go", new_user_invitation_path, class: "btn btn-primary" %>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>My Plans</h2>
+                    <% @plans.each do |plan| %>
+                        <% if plan.user_id == @admin.id %>
+                            <div class="container">
+                                <p><strong>Plan Name : </strong><%=plan.name%></p>
+                                <p><strong>Monthly Fee : </strong><%=plan.monthly_fee%></p>
+                                <%= link_to "View details", plan_path(plan)%>
+                            </div>
+                            <hr>
+                        <%end%>
+                    <%end%>
+                </div>
+                <div class="col">
+                    <h2>Buyers</h2>
+                    <% @users.each do |user| %>
+                        <%if user.user_type == 'Buyer'%>
+                            <div class ="container">
+                                <p><strong>Name : </strong><%=user.name%></p>
+                                <p><strong>Email : </strong><%=user.email%></p>
+                                <p><strong>Total Subscriptions : </strong><%=user.subscriptions.count%></p>
+                                
+                                <%= link_to "View details", admin_portal_user_details_path(user: user)%>
+                            </div>
+                            <hr>
+                        <%end%>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

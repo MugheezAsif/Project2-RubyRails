@@ -1,0 +1,14 @@
+
+
+<section class="same-heading edit-plan my-3">
+  <div class="container">
+    <h2 class="text-center my-4">Editing plan</h2>
+    <%= render "form", plan: @plan %>
+    <br>
+
+    <div>
+      <%= link_to "Show this plan", @plan, class: "btn btn-primary" %> |
+      <%= link_to "Back to plans", plans_path, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</section>

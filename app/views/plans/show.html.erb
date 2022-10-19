@@ -1,0 +1,57 @@
+
+
+<section class="plan-show same-heading">
+  <div class="container pt-5">
+    <p style="color: green"><%= notice %></p>
+    <h2 class="text-center">Plan Details</h2>
+    <p><strong>Name : </strong><%= @plan.name %></p>
+    <p><strong>Price : </strong><%= @plan.monthly_fee %>
+    <% if @plan.features.exists? %>
+      <p><strong>Features : </strong></p>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Code</th>
+              <th scope="col">Price</th>
+              <th scope="col">Max Limit</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Destroy</th>
+            </tr>
+          </thead>
+          <%count = 0%>
+          <% @plan.features.each do |feature| %>
+            <tbody>
+              <tr>
+                <th scope="row"><%=count += 1%></th>
+                <td><%=feature.name%></td>
+                <td><%=feature.code%></td>
+                <td><%=feature.unit_price%></td>
+                <td><%=feature.max_limit%></td>
+                <td><%= link_to "Edit this feature", edit_plan_feature_path(@plan, feature), class: 'btn btn-sm btn-outline-primary' %></td>
+                <td><%= button_to "Delete Feature", [feature.plan, feature], method: :delete, class: 'btn btn-sm btn-outline-secondary'%></td>
+              </tr>
+            </tbody>
+          <%end%>
+        </table>
+      </div>
+    <%else%>
+      <p>No Features Yet</p>
+    <%end%>
+    <div>
+      <%if user_signed_in?%>
+        <%if current_user.user_type == 'Admin'%>
+          <%= link_to "Add a Feature", new_plan_feature_path(@plan), class: "btn btn-primary my-2" %>
+          <br>
+          <%= link_to "Edit Plan", edit_plan_path(@plan), class: "btn btn-outline-primary"%> | <%= link_to "Back", plans_path, class: "btn btn-outline-primary"%>
+          <%= button_to "Destroy this plan", @plan, method: :delete, class: "my-2 btn btn-outline-secondary" %>
+        <%else%>
+          <%= link_to "Subscribe", plan_subscription_subscribe_path(@plan), class: "btn btn-outline-primary" %>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+  
+</section>

@@ -1,0 +1,24 @@
+
+
+<section>
+    <div class="container same-heading my-5">
+        <h2>Your Profile</h2>
+        <div>
+            <h4>Personal Info</h4>
+            <% if @user.avatar.attached? %>
+                <%= image_tag @user.avatar, class: "user-img" %>
+            <%else%>
+                <p>Edit your profile to upload profile photo</p>
+            <%end%>
+            <p><strong>Name : </strong><%= @user.name %></p>
+            <p><strong>Email : </strong><%= @user.email %></p>
+            <% if @user.user_type == 'Admin'%>
+                <p><strong>Role : </strong><span class="admin-user"><%= @user.user_type %></span></p>
+            <%else%>
+                <p><strong>Role : </strong><span class="buyer-user"><%= @user.user_type %></span></p>
+            <%end%>
+            <%= link_to "Edit", edit_user_registration_path ,class: "btn btn-outline-primary my-2" %>
+            <%= button_to "Delete my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-secondary my-2" %>
+        </div>
+    </div>
+</section>

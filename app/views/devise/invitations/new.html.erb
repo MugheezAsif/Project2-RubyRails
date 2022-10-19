@@ -1,0 +1,21 @@
+
+<section class="same-heading">
+  <div class="container my-5">
+    <h2><%= t "devise.invitations.new.header" %></h2>
+
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <h1>knasjfnaskldf</h1>
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="field form-group my-2">
+          <%= f.label field %><br />
+          <%= f.text_field field, class: "form-control" %>
+        </div>
+      <% end -%>
+
+      <div class="actions form-group my-2">
+        <%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</section>

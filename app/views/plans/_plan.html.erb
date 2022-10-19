@@ -1,0 +1,12 @@
+
+<div class="col-md-4 my-2" data-aos="fade-up" data-aos-delay="100">
+  <div class='box'>
+    <div id="<%= dom_id plan %>">
+      <h3><%= plan.name %></h3>
+      <h4><sup>$</sup><%= plan.monthly_fee %><span>per month</span></h4>
+      <li>Total features : <%= plan.features.count %></li>
+      <br>
+      <%= link_to "Edit Plan", edit_plan_path(plan), class: "btn btn-sm btn-outline-primary"%> | <%= link_to "View", plan_path(plan), class: "btn btn-sm btn-outline-primary"%>
+    </div>
+  </div>
+</div>

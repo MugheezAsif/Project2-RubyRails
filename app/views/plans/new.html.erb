@@ -1,0 +1,11 @@
+
+<section class="same-heading new-plan my-3">
+  <div class="container">
+    <h2 class="my-3">New plan</h2>
+    <p class="text-center">Here you can create new plans</p>
+    <%= render "form", plan: @plan %>
+    <div>
+      <%= link_to "Back to plans", plans_path, class: "btn btn-outline-primary my-2" %>
+    </div>
+  </div>
+</section>

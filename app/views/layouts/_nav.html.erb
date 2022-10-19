@@ -1,0 +1,31 @@
+<header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="https://github.com/mugheezasif">Mugheez</a></h1>
+      
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><%= link_to 'Plans', plans_path, class: "nav-link scrollto"%></li>
+          <li><a class="nav-link   scrollto" href="https://github.com/mugheezasif">Github</a></li>
+          <%if user_signed_in?%>
+            <% if current_user.user_type == 'Admin'%>
+              <%= link_to 'Portal', admin_portal_index_path ,class: "nav-link scrollto"%>
+            <%else%>
+              <%= link_to 'Portal', buyer_portal_index_path ,class: "nav-link scrollto"%>
+            <%end%>
+          <%else%>
+            <li><a class="nav-link scrollto" href="#">Github</a></li>
+          <%end%>  
+          <%= link_to 'Contact', new_contact_path ,class: "nav-link scrollto"%>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Profile', profile_path ,class: "getstarted scrollto"%></li>
+          <%else%>
+            <li><%= link_to 'Sign In', new_user_session_path ,class: "getstarted scrollto"%></li>
+          <%end%>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>

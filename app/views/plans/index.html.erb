@@ -1,0 +1,25 @@
+<section id="pricing" class="same-heading pricing">
+    <p style="color: green"><%= notice %></p>
+    <div id="plans">
+      <div class="container" data-aos="fade-up">
+      
+        <div class="section-title">
+          <h2>Plans</h2>
+          <p>Following are the plans that you can choese if no plans are showing then there are none available. Only admin can perform crud operations on plans.</p>
+        </div>
+        <div>
+          <div class="row">
+            <% @plans.each do |plan| %>
+          
+              <%= render plan %>
+            
+            <% end %>
+          </div>
+        </div>
+        <%= will_paginate @plans, previous_label: '', next_label: '', class: 'm-2 mx-3'  %>
+      </div>
+      <div class="container text-center my-3">
+        <%= link_to "New Plan", new_plan_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+</section>

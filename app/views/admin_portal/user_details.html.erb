@@ -1,0 +1,48 @@
+
+<section class="same-heading">
+    <div class="container my-5">
+        <h2>User Details</h2>
+        <div class="container">
+            <p><strong>Name : </strong><%=@user.name%></p>
+            <p><strong>Email : </strong><%=@user.email%></p>
+            <p><strong>Total Subscriptions : </strong><%=@user.subscriptions.count%></p>
+            <p><strong>Subscriptions:</strong><p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Plan Id</th>
+                        <th scope="col">Max Usages</th>
+                        <th scope="col">Current Usages</th>
+                        <th scope="col">Total Bill</th>
+                        <th scope="col">Billing Date</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Payment Request</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%@user.subscriptions.each do |sub|%>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><%=sub.plan_id%></td>
+                                <%count = 0%>
+                                <%count2 = 0%>
+                                <%sub.sub_features.each do |f|%>
+                                    <%count += f.max_usage%>
+                                    <%count2 += f.current_usage%>
+                                <%end%>
+                                <td><%=count%></td>
+                                <td><%=count2%></td>
+                                <td><%=sub.bill%> $</td>
+                                <td><%=sub.biling_date%></td>
+                                <td><%=sub.payment%></td>
+                                <td><%= link_to "send", admin_portal_payment_request_path(user: @user, subscription: sub) %></td>
+                            </tr>
+                        <%end%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

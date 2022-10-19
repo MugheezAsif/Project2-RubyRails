@@ -1,0 +1,16 @@
+
+<section class="mt-5 same-heading">
+  <div class="conatiner my-2">
+    <p style="color: green"><%= notice %></p>
+    <h2 class="text-center">Feature Details</h2>
+    <div class="container">
+      <%= render @feature %>
+    </div>
+    <div class="container">
+
+      <%= link_to "Edit this feature", edit_plan_feature_path(@feature), class: "my-2 btn btn-outline-primary" %> | <%= link_to "Back", plan_path(@plan), class: "my-2 btn btn-outline-primary" %>
+      <br>
+      <%= button_to "Destroy this feature", [@feature.plan, @feature], method: :delete, class: "my-2 btn btn-outline-secondary" %>
+    </div>
+  </div>
+</section>

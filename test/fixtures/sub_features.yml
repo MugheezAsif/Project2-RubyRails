@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription: one
+  current_usage: 1
+  max_usage: 1
+  bill: 1
+
+two:
+  subscription: two
+  current_usage: 1
+  max_usage: 1
+  bill: 1

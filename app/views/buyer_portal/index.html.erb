@@ -1,0 +1,44 @@
+
+<section class="same-heading">
+    <div class="container my-5">
+        <h2>Buyer Portal</h2>
+        <p class="text-center">Here you can manage all of your activities</p>
+        <div class="container">
+            <h3>Active Subscriptions</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">Subscription Id</th>
+                        <th scope="col">Plan Id</th>
+                        <th scope="col">Biling Date</th>
+                        <th scope="col">Total Bill</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">View Details</th>
+                        <th scope="col">Unsub</th>
+                        <th scope="col">Pay Bill</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @buyer.subscriptions.each do |subscription| %>
+                            <tr>
+                                <td><%= subscription.id %></td>
+                                <td><%= subscription.plan_id %></td>
+                                <td><%= subscription.biling_date %></td>
+                                <td><%= subscription.bill %>$</td>
+                                <td><%= subscription.payment %></td>
+                                <td><%= link_to "View Details", plan_subscription_details_path(subscription.plan, subscription: subscription) %>
+                                <td><%= button_to "Unsub", plan_subscriptions_path(subscription.plan, subscription: subscription), method: :delete, class: 'btn btn-sm btn-outline-secondary' %>
+                                <% if subscription.payment %>
+                                    <td>Paid</td>
+                                <% else %>
+                                    <td><%= link_to 'Pay Now', checkout_create_path(subscription.plan, subscription: subscription), method: :post, remote: true %></td>
+                                <% end %>
+                            </tr>
+                        <%end%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+
+<section class="same-heading new-feature mt-5">
+  <div class="container my-2">
+    <h2 class="text-center">New Feature</h2>
+    <p class="text-center">Here you can create a new feature for the plan you selected</p>
+    <div class="col-md-4">
+      <%= render "form", feature: @feature %>
+    </div>
+    <br>
+
+    <div>
+      <%= link_to "Back", plan_path(@plan), class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</section>

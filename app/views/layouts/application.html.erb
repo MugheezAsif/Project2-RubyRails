@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "layouts/nav" %>
+
+    <div class="position-absolute my-3">
+      <br>
+      <p class="notice p-0 m-0"><%= notice %></p>
+      <p class="alert p-0 m-0 border-0"><%= alert %></p>
+      <% flash.each do |key, message| %>
+        <p class="alert alert-<%= key %>"><%= message %></p>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <%= render "layouts/footer" %>
+  </body>
+</html>
